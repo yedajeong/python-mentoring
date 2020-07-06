@@ -1,3 +1,3 @@
 # swcon_project
 
-uploading lecture_project (test)
+uploading lecture_project
