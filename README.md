@@ -1,3 +1,3 @@
-# swcon_project
+# swcon_oopLecture
 
 uploading lecture_project
