@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <stdlib.h>
 using namespace std;
 
 // Utils
@@ -396,7 +397,7 @@ void addLecture(vector<string>& lectureCodes, vector<string>& lectureNames, vect
 
 void deleteLecture(vector<string>& lectureCodes, vector<string>& lectureNames, vector<int>& lectureCredits, vector<int>& limits, vector<int>& credits, vector<vector<string>>& appliedLectureCodes) {
 	/* 내부 호출 함수: printLectures*/
-	string inputLecCode, amuKey; //관리자로부터 삭제할 강의 정보 입력받음
+	string inputLecCode; //관리자로부터 삭제할 강의 정보 입력받음
 
 	while (1) { //아무키 누르면 계속 강의 삭제 메뉴에 머무름
 
@@ -433,15 +434,13 @@ void deleteLecture(vector<string>& lectureCodes, vector<string>& lectureNames, v
 			cout << "성공적으로 강의가 폐쇄되었습니다." << endl;
 		}
 
-		cout << "계속하려면 아무 키나 누르십시오...";
-		cin >> amuKey;
+		system("PAUSE");
 	}
 }
 
 int runAdmin(vector<string>& studentIds, vector<string>& passwords, vector<string>& names, vector<int>& credits, vector<vector<string>>& appliedLectureCodes, vector<string>& lectureCodes, vector<string>& lectureNames, vector<int>& lectureCredits, vector<int>& limits) {
 	
 	int input;
-	string amuKey;
 
 	/* 내부 호출 함수: addStudent, addLecture, deleteLecture*/
 	while (1) {
@@ -457,13 +456,11 @@ int runAdmin(vector<string>& studentIds, vector<string>& passwords, vector<strin
 
 		if (input == 1) {
 			addStudent(studentIds, passwords, names, credits, appliedLectureCodes);
-			cout << "계속하려면 아무 키나 누르십시오...";
-			cin >> amuKey;
+			system("PAUSE");
 		}
 		else if (input == 2) {
 			addLecture(lectureCodes, lectureNames, lectureCredits, limits);
-			cout << "계속하려면 아무 키나 누르십시오...";
-			cin >> amuKey;
+			system("PAUSE");
 		}
 		else if (input == 3) {
 			deleteLecture(lectureCodes, lectureNames, lectureCredits, limits, credits, appliedLectureCodes);
@@ -490,7 +487,7 @@ void applyLecture(const vector<string>& studentIds, const vector<string>& names,
 	/* 내부 호출 함수: printStudent, printLectures*/
 	printStudent(studentIds, names, credits, user);
 	printLectures(appliedLectureCodes, lectureCodes, lectureNames, lectureCredits, limits); //user은 default로 -100->강의목록 출력
-	string applyCode, amuKey;
+	string applyCode;
 
 	while (1) {
 
@@ -533,9 +530,7 @@ void applyLecture(const vector<string>& studentIds, const vector<string>& names,
 			}
 		}
 
-		cout << "계속하려면 아무 키나 누르십시오...";
-		cin >> amuKey;
-		cout << endl;
+		system("PAUSE");
 	}
 }
 
@@ -544,7 +539,7 @@ void disapplyLecture(const vector<string>& studentIds, const vector<string>& nam
 	printStudent(studentIds, names, credits, user);
 	printLectures(appliedLectureCodes, lectureCodes, lectureNames, lectureCredits, limits, user);
 
-	string disapplyCode, amuKey;
+	string disapplyCode;
 
 	while (1) {
 
@@ -566,13 +561,12 @@ void disapplyLecture(const vector<string>& studentIds, const vector<string>& nam
 		else //신청 하지 않았으면
 			cout << "과목 코드가 올바르지 않습니다." << endl;
 
-		cout << "계속하려면 아무 키나 누르십시오...";
-		cin >> amuKey;
+		system("PAUSE");
 	}
 }
 
 void changePassword(vector<string>& passwords, const int& user) {
-	string passwordInput, amuKey;
+	string passwordInput;
 
 	cout << "----------------------------------------------------" << endl <<
 		"본인 확인을 위해 비밀번호를 한 번 더 입력해주세요." << endl << "비밀번호 : ";
@@ -592,14 +586,12 @@ void changePassword(vector<string>& passwords, const int& user) {
 			"----------------------------------------------------" << endl;
 	}
 
-	cout << "계속하려면 아무 키나 누르십시오...";
-	cin >> amuKey; //아무키 누르고 학생메뉴로 이동됨
+	system("PAUSE"); //아무키 누르고 학생메뉴로 이동됨
 }
 
 int runStudent(vector<string>& studentIds, vector<string>& passwords, vector<string>& names, vector<int>& credits, vector<vector<string>>& appliedLectureCodes, vector<string>& lectureCodes, vector<string>& lectureNames, vector<int>& lectureCredits, vector<int>& limits, int user) {
 	
 	int input;
-	string amuKey;
 
 	/* 내부 호출 함수: applyLecture, printStudent, printLectures, disapplyLecture, changePassword*/
 	//return 로그아웃(-1), 종료(1)
@@ -622,8 +614,7 @@ int runStudent(vector<string>& studentIds, vector<string>& passwords, vector<str
 		else if (input == 2) {
 			printStudent(studentIds, names, credits, user);
 			printLectures(appliedLectureCodes, lectureCodes, lectureNames, lectureCredits, limits, user);
-			cout << "계속하려면 아무 키나 누르십시오...";
-			cin >> amuKey;
+			system("PAUSE");
 		}
 		
 		else if (input == 3) {
